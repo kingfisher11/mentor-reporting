@@ -15,6 +15,12 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->date('created_at');
+            $table->decimal('duration', 2, 1);
+            $table->tinyInteger('attendance');
+            $table->text('description');
+            $table->foreign('session_id')->references('session_id')->on('sessions');
+            $table->foreign('mentee_id')->references('mentee_id')->on('mentees');
             $table->timestamps();
         });
     }
